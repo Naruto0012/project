@@ -1,0 +1,38 @@
+{%extends 'index.html' %}
+{%block content%}
+<div class="container text-center">
+  <h2>
+    Hi this is my Home Page 
+  </h2>
+  <h3>
+    I am trying to perfrom CRUD Operations here
+  </h3>
+  <a href="{%url 'insert'%}" class="btn btn-primary">Create a new Data</a>
+</div>
+
+<form method="POST" action="/update/{{Obj.id}}">{%csrf_token%}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <td><input type="number" name="id" value="{{Obj.id}}" readonly></td>
+      </tr>
+      <tr>
+        <th scope="col">Name</th>
+        <td><input type="text" name="Name" value="{{Obj.Name}}" ></td>
+      </tr>
+      <tr>
+        <th scope="col">Course</th>
+        <td><input type="text" name="Course" value="{{Obj.Course}}"></td>
+      </tr>
+  </table>
+  <input type="submit" class="btn btn-success" value="Update">
+  {%if messages%}
+  {%for mess in messages%}
+  <b style="color: green;">{{mess}}</b>
+  {%endfor%}
+  {%endif%}
+</form>
+  <td><a href="{%url 'home'%}" class="btn btn-secondary">Get To Home Page</a></td>
+
+{%endblock%}

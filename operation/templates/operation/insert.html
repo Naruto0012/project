@@ -1,0 +1,30 @@
+{%extends 'index.html' %}
+{%block content%}
+<form method="POST">{%csrf_token%}
+
+    <table class="table">
+        <tr>
+          <th scope="col">Name</th>
+          <td><input type="text" name="Name" placeholder="Enter the Name"></td>
+        </tr>
+        <tr>
+          <th scope="col">Course</th>
+          <td><input type="text" name="Course" placeholder="Enter the Course-Name"></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="insert"></td>
+          <td>
+            {%if messages%}
+            {%for mess in messages%}
+            <b style="color: green;">{{mess}}</b>
+            {%endfor%}
+            {%endif%}
+          </td>
+        </tr>
+   
+    </table>
+  <a href="{%url 'home'%}" class="btn btn-danger">Cancel</a>
+
+</form>
+
+{%endblock%}

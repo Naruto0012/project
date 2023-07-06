@@ -1,0 +1,37 @@
+{%extends 'index.html' %}
+{%block content%}
+<div class="container text-center">
+  <h2>
+    Hi this is my Home Page 
+  </h2>
+  <h3>
+    I am trying to perfrom CRUD Operations here
+  </h3>
+  <a href="{%url 'insert'%}" class="btn btn-primary">Create a new Data</a>
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Course</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in data%}
+      <tr>
+        
+        <td>{{item.id}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Course}}</td>
+        <td><a href="edit/{{item.id}}" class="btn btn-success">Edit</a></td>
+        <td><a href="delete/{{item.id}}" class="btn btn-danger" onclick= "return confirm("are you sure ??")">Delete</a></td>
+      </tr>
+      {%endfor%}
+      
+    </tbody>
+  </table>
+
+{%endblock%}
